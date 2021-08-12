@@ -1,0 +1,16 @@
+:root {
+  --color-primary: hsl(180, 66%, 49%);
+  --color-primary-dark: hsl(257, 27%, 26%);
+
+  --color-neutral-gray: hsl(0, 0%, 75%);
+  --color-neutral-violet: hsl(257, 7%, 63%);
+  --color-neutral-dark: hsl(255, 11%, 22%);
+  --color-neutral-darker: hsl(260, 8%, 14%);
+
+  --color-secondary-red: hsl(0, 87%, 67%);
+}
+
+html {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
