@@ -14,6 +14,7 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/__mocks__/fileMock.js',
+    '^components/(.*)$': '<rootDir>/components/$1',
   },
   // Runs special logic, such as cleaning up components
   // when using React Testing Library and adds special
