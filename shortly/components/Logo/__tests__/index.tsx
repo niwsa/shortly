@@ -1,7 +1,5 @@
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import Logo from '../index'
-
-afterEach(cleanup)
 
 describe('Logo', () => {
   test('Render dark logo', () => {
