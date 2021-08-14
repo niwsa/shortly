@@ -1,14 +1,25 @@
-import Head from 'next/head'
+import Form from 'components/Form'
+import { ShrtCodeData } from 'lib/apiClient'
+import { useState } from 'react'
 
-export const Home = (): JSX.Element => (
-  <>
-    <Head>
-      <title>Shortly</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <main></main>
-    <footer></footer>
-  </>
-)
+const Home = (): JSX.Element => {
+  const [shrtCodeList, setShrtCodeList] = useState<Array<ShrtCodeData>>([])
+
+  function addToList(shrtCodeData: ShrtCodeData) {
+    setShrtCodeList((curList) => [...curList, shrtCodeData])
+  }
+  return (
+    <>
+      <Form addShrtCodeToList={addToList}></Form>
+      <ul>
+        {shrtCodeList.map(({ original_link, full_short_link, code }) => (
+          <li key={code}>
+            {original_link}-{full_short_link}
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
 
 export default Home
