@@ -17,6 +17,8 @@
   --space-xxl: 6rem;
   /* FONT SIZE */
   --font-size: 14px;
+  /* CONTENT PADDING */
+  --content-padding: var(--space-lg);
 }
 
 @media screen and (min-width: 480px) {
