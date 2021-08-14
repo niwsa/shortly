@@ -1,0 +1,20 @@
+.form__status,
+.form__submit {
+  width: 8rem;
+  height: var(--space-lg);
+  padding: var(--space-xxs);
+
+  color: #fff;
+  background: var(--color-primary);
+  appearance: none;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.form__spinner {
+  max-width: 100%;
+  max-height: 100%;
+}
