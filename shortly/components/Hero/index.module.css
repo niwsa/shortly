@@ -1,0 +1,11 @@
+.hero-section {
+  overflow: hidden;
+}
+.hero-section__image {
+  width: 130%;
+  height: auto;
+  object-position: var(--content-padding);
+}
+.hero-section__content {
+  color: var(--color-neutral-violet);
+}
