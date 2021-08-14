@@ -1,7 +1,12 @@
 .header {
-  padding: var(--space-lg) var(--space-sm);
-  position: relative;
+  /* padding: var(--space-lg) var(--space-sm);
+  position: relative; */
   --banner-height: 2.5rem;
+  padding: 0 var(--content-padding);
+  margin: var(--banner-height) 0 var(--space-sm);
+  /* height is needed because children are removed from document flow collapsing the header */
+  height: var(--banner-height);
+  position: relative;
 }
 
 .header__logo {
@@ -55,7 +60,7 @@
 
 .nav__list {
   width: 100%;
-  position: relative;
+  position: absolute;
   top: var(--banner-height);
   padding: 0;
   margin: 0;
@@ -66,10 +71,25 @@
 
 .nav__list--active {
   display: block;
+  background: var(--color-primary-dark);
+  color: #fff;
+  border-radius: var(--space-xs);
+  margin-top: var(--space-sm);
+  padding: var(--space-lg) var(--space-md);
 }
 
 .nav__list-item {
   text-align: center;
+}
+
+.nav__list-item:not(:first-child) {
+  margin-top: var(--space-md);
+}
+
+.nav__list-item--spacer {
+  height: 1px;
+  background: var(--color-neutral-violet);
+  opacity: 0.4;
 }
 
 @media (min-width: 700px) {
@@ -81,6 +101,7 @@
     display: none;
   }
   .nav__list {
+    position: relative;
     display: flex;
     align-items: center;
     width: auto;
@@ -88,6 +109,11 @@
     top: 0;
   }
   .nav__list-item:not(:first-child) {
-    margin-left: var(--space-xs);
+    margin: 0 0 0 var(--space-xs);
+  }
+  .nav__list-item--spacer {
+    height: 1px;
+    background: none;
+    flex: 1;
   }
 }
