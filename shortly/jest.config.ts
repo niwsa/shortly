@@ -18,6 +18,7 @@ const config: Config.InitialOptions = {
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/__mocks__/fileMock.js',
     '^components/(.*)$': '<rootDir>/components/$1',
     '^lib/(.*)$': '<rootDir>/lib/$1',
+    '^hooks/(.*)$': '<rootDir>/hooks/$1',
   },
   // Runs special logic, such as cleaning up components
   // when using React Testing Library and adds special
