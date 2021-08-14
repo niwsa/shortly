@@ -23,7 +23,7 @@
     ]
   },
   "dependencies": {
-    "next": "latest",
+    "next": "^11.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -46,6 +46,7 @@
     "jest": "^27.0.4",
     "jest-watch-typeahead": "^0.6.1",
     "lint-staged": "^10.0.10",
+    "mq-polyfill": "^1.1.8",
     "msw": "^0.34.0",
     "prettier": "^2.0.2",
     "ts-node": "^10.2.0",
