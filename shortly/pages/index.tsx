@@ -1,4 +1,5 @@
 import Form from 'components/Form'
+import Hero from 'components/Hero'
 import { ShrtCodeData } from 'lib/apiClient'
 import { useState } from 'react'
 
@@ -10,6 +11,7 @@ const Home = (): JSX.Element => {
   }
   return (
     <>
+      <Hero />
       <Form addShrtCodeToList={addToList}></Form>
       <ul>
         {shrtCodeList.map(({ original_link, full_short_link, code }) => (
