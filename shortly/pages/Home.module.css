@@ -1,8 +1,15 @@
 .content {
   margin-top: calc(1.5 * var(--space-xxl));
+  padding: 0 var(--content-padding) var(--content-padding);
   background: hsl(225, 33%, 95%);
 }
 
 .content__interactive {
   transform: translateY(-50%);
+}
+
+.content__list {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-md);
 }
