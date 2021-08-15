@@ -96,6 +96,7 @@
 @media (min-width: 700px) {
   .header {
     display: flex;
+    margin: var(--banner-height) 0;
   }
   .header__logo {
     position: relative;
