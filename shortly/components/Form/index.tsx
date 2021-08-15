@@ -40,6 +40,7 @@ const Form = (props: FormProps): JSX.Element => {
     <form onSubmit={handleSubmit} className={styles['form']}>
       <input
         type="url"
+        className={styles['form__input']}
         placeholder="Shorten a link here..."
         pattern="https://.*"
         title="Only https urls allowed"
