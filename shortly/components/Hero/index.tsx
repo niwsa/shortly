@@ -17,6 +17,9 @@ export default function Hero(): JSX.Element {
       <p className={styles['hero-section__content']}>
         Build your brand&apos;s recognition and get detailed insights on how
         your links are performing.
+        <button type="button" className={styles['hero-section__ctoa']}>
+          Get Started
+        </button>
       </p>
     </div>
   )
