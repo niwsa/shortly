@@ -28,11 +28,23 @@
   }
 }
 
+@media screen and (min-width: 800px) {
+  :root {
+    --content-padding: calc(1.5 * var(--space-xl));
+  }
+}
+
 @media screen and (min-width: 1025px) {
   /* big landscape tablets, laptops, and desktops */
   :root {
     --font-size: 18px;
     --content-padding: var(--space-xxl);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  :root {
+    --content-padding: calc(1.5 * var(--space-xxl));
   }
 }
 
