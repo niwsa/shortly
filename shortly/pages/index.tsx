@@ -2,7 +2,8 @@ import { useState } from 'react'
 import Form from 'components/Form'
 import Hero from 'components/Hero'
 import { ShrtCodeData } from 'lib/apiClient'
-import styles from './index.module.css'
+import styles from './Home.module.css'
+import DataCard from 'components/DataCard'
 
 const Home = (): JSX.Element => {
   const [shrtCodeList, setShrtCodeList] = useState<Array<ShrtCodeData>>([])
@@ -17,10 +18,10 @@ const Home = (): JSX.Element => {
         <div className={styles['content__interactive']}>
           <Form addShrtCodeToList={addToList}></Form>
         </div>
-        <ul>
+        <ul className={styles['content__list']}>
           {shrtCodeList.map(({ original_link, full_short_link, code }) => (
             <li key={code}>
-              {original_link}-{full_short_link}
+              <DataCard item={original_link} value={full_short_link} />
             </li>
           ))}
         </ul>

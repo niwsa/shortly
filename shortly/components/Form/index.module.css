@@ -1,5 +1,5 @@
 .form {
-  width: calc(100% - 2 * var(--content-padding));
+  /* width: calc(100% - 2 * var(--content-padding)); */
   margin: 0 auto;
   padding: var(--space-md);
   display: flex;
@@ -28,6 +28,7 @@
 .form__submit {
   width: 100%;
   height: var(--space-xl);
+  padding: 0.4rem;
   font-size: 1.1rem;
   font-weight: bold;
   color: #fff;
