@@ -37,7 +37,7 @@ const Form = (props: FormProps): JSX.Element => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles['form']}>
       <input
         type="url"
         placeholder="Shorten a link here..."

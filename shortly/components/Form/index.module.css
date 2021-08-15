@@ -1,3 +1,6 @@
+.form {
+  padding: 0 var(--content-padding);
+}
 .form__status,
 .form__submit {
   width: 8rem;
