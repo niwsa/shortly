@@ -1,0 +1,8 @@
+.content {
+  margin-top: calc(1.5 * var(--space-xxl));
+  background: hsl(225, 33%, 95%);
+}
+
+.content__interactive {
+  transform: translateY(-50%);
+}
