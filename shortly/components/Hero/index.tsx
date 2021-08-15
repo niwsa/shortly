@@ -10,9 +10,10 @@ export default function Hero(): JSX.Element {
         height="482"
         alt="Person working on a computer"
       ></img>
-      <h2 className={styles['hero-section__heading']}>
-        More than just shorter links
-      </h2>
+      <h1 className={styles['hero-section__heading']}>
+        <span>More than just</span>
+        <span>shorter links</span>
+      </h1>
       <p className={styles['hero-section__content']}>
         Build your brand&apos;s recognition and get detailed insights on how
         your links are performing.
