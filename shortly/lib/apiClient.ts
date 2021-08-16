@@ -32,7 +32,8 @@ async function client(path: string): Promise<ShrtCodeDataRes | ShrtCodeErr> {
   if (response.ok) {
     return data
   } else {
-    return Promise.reject(data)
+    const { error } = data as ShrtCodeErr
+    return Promise.reject(error)
   }
 
 }
