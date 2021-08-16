@@ -12,6 +12,7 @@ export default function DataCard(props: DataCardProps): JSX.Element {
   async function copyToClipBoard(): Promise<void> {
     try {
       if (navigator.clipboard) {
+        // Requires secure context HTTPS or localhost
         await navigator.clipboard.writeText(props.value)
       } else {
         // TODO: support for older browsers
