@@ -34,6 +34,7 @@ const Form = (props: FormProps): JSX.Element => {
     e.preventDefault()
     // show loading state
     setFetchingShrtCode(true)
+    // lazy load the api client
     const client = (await import('lib/apiClient')).default
     try {
       const { result } = (await client(
