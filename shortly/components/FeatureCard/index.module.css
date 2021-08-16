@@ -1,0 +1,52 @@
+.card {
+  /* made it a variable to use for negative margin in avatar */
+  --padding-top: var(--space-sm);
+  background: #fff;
+  /* margin-bottom: var(--space-xxl); */
+  border-radius: var(--space-xs);
+  /* padding top is essential to prevent margin collapsing with 
+  .card__avatar  */
+  padding: var(--padding-top) var(--space-lg) var(--space-lg);
+}
+
+.card__avatar {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto;
+  background: var(--color-primary-dark);
+  /* has a negative margin to pull it up */
+  margin-top: calc(-2.5rem - var(--padding-top));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__avatar img {
+  width: 50%;
+  height: 50%;
+}
+
+.card__heading {
+  font-size: 1.5rem;
+  margin: var(--space-md) 0;
+}
+
+.card__description {
+  color: var(--color-neutral-violet);
+}
+
+@media screen and (min-width: 800px) {
+  .card {
+    text-align: left;
+    /* margin-bottom: 0; */
+    height: 100%;
+  }
+  .card__avatar {
+    margin-left: 0;
+  }
+  .card__heading {
+    font-size: 1.2rem;
+  }
+}
