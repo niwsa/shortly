@@ -47,6 +47,7 @@ test('fetches shortUrl on form submit', async () => {
   await waitForElementToBeRemoved(() =>
     screen.getByLabelText(/Fetching short link/i)
   )
+  expect(addShrtCodeToList).toHaveBeenCalled()
   await waitFor(() => screen.getByText(/Shorten It!/i))
   expect(urlInput).toHaveValue('')
 })
