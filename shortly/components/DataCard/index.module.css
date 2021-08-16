@@ -38,7 +38,7 @@
   align-self: center;
   width: calc(100% - 2 * var(--card-padding));
   height: var(--space-xl);
-  padding: var(--card-padding);
+  padding: var(--space-xs);
   font-size: var(--space-sm);
   font-weight: bold;
   color: #fff;
@@ -51,6 +51,10 @@
   text-align: center;
 }
 
+.card__value-copy--done {
+  background: var(--color-primary-dark);
+}
+
 @media screen and (min-width: 800px) {
   .card__item {
     flex: min-content;
@@ -60,7 +64,7 @@
     opacity: 0;
   }
   .card__value-copy {
-    width: auto;
+    width: 7rem;
     margin-left: var(--card-padding);
   }
 }
