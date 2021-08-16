@@ -4,6 +4,8 @@ import Hero from 'components/Hero'
 import { ShrtCodeData } from 'lib/apiClient'
 import styles from './Home.module.css'
 import DataCard from 'components/DataCard'
+import FeatureCard from 'components/FeatureCard'
+import { featureHighlights } from 'lib/cms'
 
 const Home = (): JSX.Element => {
   const [shrtCodeList, setShrtCodeList] = useState<Array<ShrtCodeData>>([])
@@ -20,11 +22,32 @@ const Home = (): JSX.Element => {
         </div>
         <ul className={styles['content__list']}>
           {shrtCodeList.map(({ original_link, full_short_link, code }) => (
-            <li key={code}>
+            <li key={code} className={styles['content__list-item']}>
               <DataCard item={original_link} value={full_short_link} />
             </li>
           ))}
         </ul>
+        <section className={styles['highlights']}>
+          <h2 className={styles['highlights__heading']}>Advanced Statistics</h2>
+          <p className={styles['highlights__meta']}>
+            Track how your links are performing across the web with our advanced
+            statistics dashboard.
+          </p>
+          <ul className={styles['highlights__card-list']}>
+            {featureHighlights.map(
+              ({ avatar, avatarSize, heading, description }, index) => (
+                <li key={index} className={styles['highlights__card']}>
+                  <FeatureCard
+                    avatar={avatar}
+                    avatarSize={avatarSize}
+                    heading={heading}
+                    description={description}
+                  />
+                </li>
+              )
+            )}
+          </ul>
+        </section>
       </div>
     </>
   )
