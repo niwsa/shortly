@@ -19,12 +19,15 @@ The project was bootstrapped from https://github.com/vercel/next.js/tree/canary/
 yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
 ```
 
+This provides `typescript, eslint and prettier` support out of the box.
+Added `setupTests.ts` which loads the next env into jest for testing
+
 ## Directory Layout
 
 - \_\_mocks\_\_
   - Contains jest mock files
 - \_\_tests\_\_
-  - Contains integration tests
+  - Contains integration tests (**TODO**)
 - \_\_components\_\_
   - DataCard - Renders the generated shortlink and original link with copy to clipboard button
   - FeatureCard - Renders a single feature card with its title and description along with a nice rounded icon
@@ -81,4 +84,6 @@ This project uses testing-library along with its companion libs like
 
 The test running is made possible via `jest`.
 
-For REST API mocking this project uses [msw](https://mswjs.io/).
+For REST API mocking this project uses [msw](https://mswjs.io/). `Fetch` api is polyfilled in jest with `whatwg-fetch`.
+
+For testing mobile viewports (nav dropdown) `mq-polyfill` is [added](https://spectrum.chat/testing-library/help-react/how-to-set-window-innerwidth-to-test-mobile~70aa9572-b7cc-4397-92f5-a09d75ed24b8?m=MTU1OTU5MTI2MTI0MQ==) innorder for `window resizeTo` to work.
