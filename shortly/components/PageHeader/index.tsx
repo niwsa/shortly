@@ -9,8 +9,8 @@ import useKeypress from 'hooks/useKeyPress'
 export default function PageHeader(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  function toggle() {
-    setIsMenuOpen((prevState) => !prevState)
+  function openMenu() {
+    setIsMenuOpen(true)
   }
 
   const menuRef = useRef<HTMLUListElement>(null)
@@ -49,7 +49,7 @@ export default function PageHeader(): JSX.Element {
         <button
           aria-label="Menu"
           className={styles['nav__button']}
-          onClick={toggle}
+          onClick={openMenu}
           aria-expanded={isMenuOpen}
           aria-controls="menu-list"
         >
@@ -69,7 +69,11 @@ export default function PageHeader(): JSX.Element {
             className={`${styles['nav__list-item']} ${styles['nav__list-item--spacer']}`}
           ></li>
           <li className={styles['nav__list-item']}>Login</li>
-          <li className={styles['nav__list-item']}>Sign Up</li>
+          <li className={styles['nav__list-item']}>
+            <button type="button" className={`ctoa ${styles['nav__signup']}`}>
+              Sign Up
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
