@@ -1,33 +1,84 @@
-# NextJS Typescript Boilerplate
+# SHORTLY
 
-Bootstrap a developer-friendly NextJS app configured with:
+## How to get going ?
 
-- [Typescript](https://www.typescriptlang.org/)
-- Linting with [ESLint](https://eslint.org/)
-- Formatting with [Prettier](https://prettier.io/)
-- Linting, typechecking and formatting on by default using [`husky`](https://github.com/typicode/husky) for commit hooks
-- Testing with [Jest](https://jestjs.io/) and [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro)
-
-## Preview
-
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest&project-name=with-typescript-eslint-jest&repository-name=with-typescript-eslint-jest)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+Install the packages and start the dev server on port 3000
 
 ```bash
-npx create-next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
-# or
+yarn install
+yarn dev
+```
+
+Open your browser of choice and go to http://localhost:3000
+
+## Dev Tooling Setup
+
+The project was bootstrapped from https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest by running
+
+```bash
 yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Directory Layout
+
+- \_\_mocks\_\_
+  - Contains jest mock files
+- \_\_tests\_\_
+  - Contains integration tests
+- \_\_components\_\_
+  - DataCard - Renders the generated shortlink and original link with copy to clipboard button
+  - FeatureCard - Renders a single feature card with its title and description along with a nice rounded icon
+  - Footer - Renders the `footer` inside `_app.tsx`
+  - Form - Renders the `form` which takes in user link and calls the shrtco.de API to get the short link.
+  - Hero - Renders the hero landing content along with the illustration;Will be the first thing a user sees on loading the page.
+  - Logo - Logo used in header and footer with both dark and light versions.
+  - PageHeader - Renders the banner with the logo, navigation and signup buttons
+- hooks
+  - useKeyPress.ts - Listens for a specific key press and triggers handler
+  - useOnClickOutside.ts - Listens for click outside a component.
+  - useWindowSize.ts - Listens to window `resize` events and returns the current width/height.
+- lib
+  - apiClient.ts - fetch call to shrtco.de API
+  - cms.ts - A small catalogue most likely a whole Content Management System interfacing in a production app.
+  - localStorage.ts - Store and retrieve short links from localStorage.
+- pages
+  - \_document.tsx - Used for sourcing "Poppins" font and setting document language.
+  - \_app.tsx - Persists layout between page changes (both `<header>` and `<footer>` + `<main>` which holds the page level contents are rendered here). Global css is imported here.
+  - index.tsx - Renders the `/` path inside `<main>` with whatever comes between `<header>` and `<footer>`
+  - Home.module.css - Contains layout styling for `/` path
+- public
+  - Contains different SVG assets used across the application
+- styles
+  - global.css - declares the CSS variables, font-family, responsive app font size and content padding plus call to action (`.ctoa`) button style.
+
+## Tests
+
+To run the tests:
+
+```bash
+yarn test
+```
+
+Where to find the test files:
+
+```js
+components/ <component> /__tests__
+```
+
+eg:
+
+```js
+components / PageHeader / __tests__
+```
+
+### Testing Frameworks and libraries:
+
+This project uses testing-library along with its companion libs like
+
+- `@testing-library/jest-dom` (for better assertions like `toHaveClass`),
+- `@testing-library/react` (for rendering React components),
+- `@testing-library/user-event` (for simulating user click and keypress).
+
+The test running is made possible via `jest`.
+
+For REST API mocking this project uses [msw](https://mswjs.io/).
