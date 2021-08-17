@@ -1,6 +1,6 @@
 .content {
   margin-top: calc(1.5 * var(--space-xxl));
-  padding: 0 var(--content-padding) var(--content-padding);
+  padding: 0 var(--content-padding);
   background: hsl(225, 33%, 95%);
 }
 
@@ -71,6 +71,7 @@
     gap: var(--space-md);
     grid-template-columns: repeat(3, minmax(min-content, 1fr));
     grid-auto-rows: 1fr;
+    margin-bottom: calc(2 * var(--space-xxl));
   }
 
   .highlights__card:not(:last-child):after {

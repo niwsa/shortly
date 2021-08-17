@@ -1,4 +1,5 @@
 .header {
+  /* corresponding to 35px at root font size of 14px */
   --banner-height: 2.5rem;
   padding: 0 var(--content-padding);
   margin: var(--banner-height) 0 var(--space-sm);
@@ -12,7 +13,6 @@
 
   position: absolute;
   display: inline-block;
-  /* corresponding to 40px at root font size of 14px */
   width: calc(121 / 33 * var(--banner-height));
   height: 0;
   padding-top: var(--banner-height);
