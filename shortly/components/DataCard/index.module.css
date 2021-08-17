@@ -72,5 +72,6 @@
   .card__value-copy {
     width: 7rem;
     margin-left: var(--card-padding);
+    flex-shrink: 0;
   }
 }
