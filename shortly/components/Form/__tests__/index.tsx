@@ -51,3 +51,26 @@ test('fetches shortUrl on form submit', async () => {
   await waitFor(() => screen.getByText(/Shorten It!/i))
   expect(urlInput).toHaveValue('')
 })
+
+test('empty input shows error', async () => {
+  const addShrtCodeToList = jest.fn()
+  render(<Form addShrtCodeToList={addShrtCodeToList} />)
+  const urlInput = screen.getByLabelText(/URL to shorten/i)
+  const submitBtn = screen.getByText(/Shorten It!/i)
+  userEvent.click(submitBtn)
+  await waitFor(() => expect(urlInput).toBeInvalid())
+  expect(screen.getByText(/Please add a link/i)).toBeInTheDocument()
+  expect(addShrtCodeToList).not.toHaveBeenCalled()
+})
+
+test('http link shows error', async () => {
+  const addShrtCodeToList = jest.fn()
+  render(<Form addShrtCodeToList={addShrtCodeToList} />)
+  const urlInput = screen.getByLabelText(/URL to shorten/i)
+  const submitBtn = screen.getByText(/Shorten It!/i)
+  userEvent.type(urlInput, 'http://nextjs.org')
+  userEvent.click(submitBtn)
+  await waitFor(() => expect(urlInput).toBeInvalid())
+  expect(screen.getByText(/Only HTTPS urls allowed/i)).toBeInTheDocument()
+  expect(addShrtCodeToList).not.toHaveBeenCalled()
+})
