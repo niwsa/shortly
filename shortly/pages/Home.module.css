@@ -93,3 +93,27 @@
     transform: translateY(calc(2 * var(--space-lg)));
   }
 }
+
+.boost {
+  padding: var(--space-xxl) var(--space-xl);
+  margin: 0 calc(-1 * var(--content-padding));
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+
+  background: url('/bg-boost-mobile.svg');
+  background-color: var(--color-primary-dark);
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: cover;
+}
+
+@media screen and (min-width: 700px) {
+  .boost {
+    padding: var(--space-xl);
+
+    background-image: url('/bg-boost-desktop.svg');
+    background-position: center;
+  }
+}

@@ -64,6 +64,12 @@ const Home = (): JSX.Element => {
             )}
           </ul>
         </section>
+        <div className={styles['boost']}>
+          <div className={styles['boost__tagline']}>Boost your links today</div>
+          <button type="button" className="ctoa">
+            Get Started
+          </button>
+        </div>
       </div>
     </>
   )
