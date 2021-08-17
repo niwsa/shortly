@@ -15,11 +15,11 @@ beforeAll(() => {
   }
 })
 beforeEach(() => {
-  // resize to smaller than 700px
+  // resize to smaller than 700px so that mobile nav appears
   window.resizeTo(500, 900)
 })
 
-test('menu button activates the mobile navigation', () => {
+test('menu button activates the mobile navigation on one click', () => {
   render(<PageHeader />)
 
   userEvent.click(screen.getByLabelText('Menu'))
@@ -27,12 +27,17 @@ test('menu button activates the mobile navigation', () => {
   expect(screen.getByRole('list')).toHaveClass('nav__list--active')
 })
 
-test('menu button toggle closes the mobile navigation', () => {
+test('menu button closes the mobile navigation on second click', async () => {
   render(<PageHeader />)
-
-  userEvent.dblClick(screen.getByLabelText('Menu'))
-
-  expect(screen.getByRole('list')).not.toHaveClass('nav__list--active')
+  const menuBtn = screen.getByLabelText('Menu')
+  act(() => userEvent.click(menuBtn))
+  await waitFor(() =>
+    expect(screen.getByRole('list')).toHaveClass('nav__list--active')
+  )
+  act(() => userEvent.click(menuBtn))
+  await waitFor(() =>
+    expect(screen.getByRole('list')).not.toHaveClass('nav__list--active')
+  )
 })
 
 test('opened menu closes when window is resized to more than 700px', async () => {
@@ -44,6 +49,25 @@ test('opened menu closes when window is resized to more than 700px', async () =>
 
   act(() => {
     window.resizeTo(900, 900)
+  })
+
+  await waitFor(() =>
+    expect(screen.getByRole('list')).not.toHaveClass('nav__list--active')
+  )
+})
+
+test('opened menu closes on esc key press', async () => {
+  render(<PageHeader />)
+
+  // act(() => userEvent.click(screen.getByLabelText('Menu')))
+  userEvent.click(screen.getByLabelText('Menu'))
+
+  await waitFor(() =>
+    expect(screen.getByRole('list')).toHaveClass('nav__list--active')
+  )
+
+  act(() => {
+    userEvent.keyboard('{esc}')
   })
 
   await waitFor(() =>
