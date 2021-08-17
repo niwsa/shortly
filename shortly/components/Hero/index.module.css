@@ -23,24 +23,6 @@
   margin: 0 auto;
 }
 
-.hero-section__ctoa {
-  margin: var(--space-md) auto;
-  width: calc(2 * var(--space-xxl));
-  height: var(--space-xl);
-  display: block;
-  font-weight: bold;
-  font-size: 1.2rem;
-  color: #fff;
-  background: var(--color-primary);
-  appearance: none;
-  outline: none;
-  border: none;
-  border-radius: var(--space-lg);
-  cursor: pointer;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
-
 @media screen and (min-width: 800px) {
   .hero-section {
     display: grid;

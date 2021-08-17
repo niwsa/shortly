@@ -64,3 +64,29 @@ html {
 body {
   margin: 0;
 }
+
+.ctoa {
+  margin: var(--space-md) auto;
+  width: calc(2.25 * var(--space-xxl));
+  /* height: var(--space-xl); */
+  height: 4rem;
+  display: block;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #fff;
+  background: var(--color-primary);
+  appearance: none;
+  outline: none;
+  border: none;
+  border-radius: var(--space-lg);
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+@media screen and (min-width: 700px) {
+  .ctoa {
+    height: 3.5rem;
+    width: calc(2 * var(--space-xxl));
+  }
+}
