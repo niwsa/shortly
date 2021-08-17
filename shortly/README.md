@@ -27,7 +27,7 @@ Added `setupTests.ts` which loads the next env into jest for testing
 - \_\_mocks\_\_
   - Contains jest mock files
 - \_\_tests\_\_
-  - Contains integration tests (**TODO**)
+  - Contains e2e tests
 - \_\_components\_\_
   - DataCard - Renders the generated shortlink and original link with copy to clipboard button
   - FeatureCard - Renders a single feature card with its title and description along with a nice rounded icon
