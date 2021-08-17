@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Logo from 'components/Logo'
 import styles from './index.module.css'
 import useWindowSize from 'hooks/useWindowSize'
+import useOnClickOutside from 'hooks/useOnClickOutside'
+import useKeypress from 'hooks/useKeyPress'
 
 export default function PageHeader(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -11,8 +13,15 @@ export default function PageHeader(): JSX.Element {
     setIsMenuOpen((prevState) => !prevState)
   }
 
-  const [width] = useWindowSize()
+  const menuRef = useRef<HTMLUListElement>(null)
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false)
+  }, [])
+  // catch outside click only when menu is open
+  useOnClickOutside(menuRef, closeMenu, isMenuOpen)
+  useKeypress('Escape', closeMenu, isMenuOpen)
 
+  const [width] = useWindowSize()
   useEffect(() => {
     // If user resizes the browser window (or any event which causes window to resize ),
     // close the menu
@@ -48,6 +57,7 @@ export default function PageHeader(): JSX.Element {
         </button>
         <ul
           id="menu-list"
+          ref={menuRef}
           className={`${styles['nav__list']} ${
             isMenuOpen ? styles['nav__list--active'] : ''
           }`}
