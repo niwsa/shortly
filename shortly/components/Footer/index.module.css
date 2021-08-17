@@ -70,8 +70,10 @@
 @media screen and (min-width: 900px) {
   .footer {
     display: grid;
-    grid-template-columns: minmax(min-content, 1fr) minmax(max-content, 2fr);
+    /* grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 2fr); */
+    grid-template-columns: 1fr 2fr;
     justify-items: start;
+    padding: var(--space-xl) var(--content-padding);
   }
 
   .footer__logo {
