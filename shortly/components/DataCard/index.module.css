@@ -39,6 +39,7 @@
   width: calc(100% - 2 * var(--card-padding));
   height: var(--space-xl);
   padding: var(--space-xs);
+  font-family: inherit;
   font-size: var(--space-sm);
   font-weight: bold;
   color: #fff;
@@ -49,6 +50,11 @@
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
+  transition: background 0.25s ease-in-out;
+}
+
+.card__value-copy:hover {
+  filter: brightness(110%);
 }
 
 .card__value-copy--done {

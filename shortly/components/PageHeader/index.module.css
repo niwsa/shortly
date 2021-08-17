@@ -80,7 +80,7 @@
 }
 
 .nav__list-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .nav__list-item:not(:first-child) {
@@ -91,6 +91,14 @@
   height: 1px;
   background: var(--color-neutral-violet);
   opacity: 0.4;
+}
+
+.nav__signup {
+  width: 100%;
+  height: 3rem;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0 var(--space-sm);
 }
 
 @media (min-width: 700px) {
@@ -130,5 +138,9 @@
     height: 1px;
     background: none;
     flex: 1;
+  }
+  .nav__signup {
+    height: var(--banner-height);
+    padding: 0 var(--space-md);
   }
 }

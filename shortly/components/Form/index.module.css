@@ -35,8 +35,9 @@
   width: 100%;
   height: var(--space-xl);
   padding: 0.4rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
+  font-family: inherit;
   color: #fff;
   background: var(--color-primary);
   appearance: none;
