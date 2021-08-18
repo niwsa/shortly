@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from 'react'
+import { FocusEvent, FormEvent, useState } from 'react'
 import { ShrtCodeData, ShrtCodeDataRes } from 'lib/apiClient'
 import styles from './index.module.css'
 
@@ -9,29 +9,32 @@ interface FormProps {
 const Form = (props: FormProps): JSX.Element => {
   const { addShrtCodeToList } = props
   const [inputUrl, setInputUrl] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null)
   const [errMessage, setErrMessage] = useState('')
 
   const handleChange = (e: FormEvent<HTMLInputElement>): void => {
-    setErrMessage('')
+    // setErrMessage('')
     setInputUrl(e.currentTarget.value)
   }
 
-  const showErrors = (): void => {
-    if (inputRef.current.validity.typeMismatch) {
+  const checkValidity = (e: FocusEvent<HTMLInputElement>): void => {
+    const inputEl = e.target as HTMLInputElement
+    if (inputEl.validity.typeMismatch) {
       setErrMessage('Please enter a valid https:// url')
     }
-    if (inputRef.current.validity.patternMismatch) {
+    if (inputEl.validity.patternMismatch) {
       setErrMessage('Only HTTPS urls allowed')
     }
-    if (inputRef.current.validity.valueMissing)
+    if (inputEl.validity.valueMissing) {
       setErrMessage('Please add a link')
+    }
   }
 
   const [fetchingShrtCode, setFetchingShrtCode] = useState(false)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault()
+    // clear previous error messages
+    setErrMessage('')
     // show loading state
     setFetchingShrtCode(true)
     // lazy load the api client
@@ -57,7 +60,7 @@ const Form = (props: FormProps): JSX.Element => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={styles['form']}>
+    <form onSubmit={handleSubmit} className={styles['form']} aria-label="form">
       <div className={styles['form__input-container']}>
         <input
           type="url"
@@ -71,8 +74,8 @@ const Form = (props: FormProps): JSX.Element => {
           onChange={handleChange}
           aria-label="URL to shorten"
           aria-describedby="url-error"
-          onInvalid={showErrors}
-          ref={inputRef}
+          aria-invalid={!!errMessage}
+          onBlur={checkValidity}
         ></input>
         <div id="url-error" className={styles['form__error']}>
           {errMessage}

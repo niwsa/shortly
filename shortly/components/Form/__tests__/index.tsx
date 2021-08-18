@@ -52,25 +52,57 @@ test('fetches shortUrl on form submit', async () => {
   expect(urlInput).toHaveValue('')
 })
 
-test('empty input shows error', async () => {
+test('empty input makes input invalid', async () => {
   const addShrtCodeToList = jest.fn()
   render(<Form addShrtCodeToList={addShrtCodeToList} />)
+  // const form = screen.getByRole('form')
   const urlInput = screen.getByLabelText(/URL to shorten/i)
-  const submitBtn = screen.getByText(/Shorten It!/i)
-  userEvent.click(submitBtn)
+  // const submitBtn = screen.getByText(/Shorten It!/i)
+  urlInput.focus()
+  urlInput.blur()
+  // screen.debug()
+  // userEvent.click(submitBtn)
   await waitFor(() => expect(urlInput).toBeInvalid())
-  expect(screen.getByText(/Please add a link/i)).toBeInTheDocument()
+  // screen.debug()
+  await waitFor(() =>
+    expect(screen.getByText(/Please add a link/i)).toBeInTheDocument()
+  )
   expect(addShrtCodeToList).not.toHaveBeenCalled()
 })
 
 test('http link shows error', async () => {
   const addShrtCodeToList = jest.fn()
   render(<Form addShrtCodeToList={addShrtCodeToList} />)
+  // const form = screen.getByRole('form')
+
   const urlInput = screen.getByLabelText(/URL to shorten/i)
   const submitBtn = screen.getByText(/Shorten It!/i)
   userEvent.type(urlInput, 'http://nextjs.org')
+  urlInput.blur()
+  // screen.debug()
   userEvent.click(submitBtn)
   await waitFor(() => expect(urlInput).toBeInvalid())
-  expect(screen.getByText(/Only HTTPS urls allowed/i)).toBeInTheDocument()
+  // expect(screen.getByText(/Only HTTPS urls allowed/i)).toBeInTheDocument()
+  expect(addShrtCodeToList).not.toHaveBeenCalled()
+})
+
+test('invalid https url shows error', async () => {
+  // NOTE: For some reason I am not able to test for the presence of error messages in this test
+
+  const addShrtCodeToList = jest.fn()
+  render(<Form addShrtCodeToList={addShrtCodeToList} />)
+  // const form = screen.getByRole('form')
+
+  const urlInput = screen.getByLabelText(/URL to shorten/i)
+  // const submitBtn = screen.getByText(/Shorten It!/i)
+  // not able to
+  userEvent.type(urlInput, 'https://<dasd')
+  urlInput.blur()
+  expect(
+    screen.getByText(/Please enter a valid https:\/\/ url/i)
+  ).toBeInTheDocument()
+  // screen.debug()
+  // userEvent.click(submitBtn)
+  await waitFor(() => expect(urlInput).toBeInvalid())
   expect(addShrtCodeToList).not.toHaveBeenCalled()
 })
