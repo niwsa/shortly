@@ -87,3 +87,9 @@ The test running is made possible via `jest`.
 For REST API mocking this project uses [msw](https://mswjs.io/). `Fetch` api is polyfilled in jest with `whatwg-fetch`.
 
 For testing mobile viewports (nav dropdown) `mq-polyfill` is [added](https://spectrum.chat/testing-library/help-react/how-to-set-window-innerwidth-to-test-mobile~70aa9572-b7cc-4397-92f5-a09d75ed24b8?m=MTU1OTU5MTI2MTI0MQ==) innorder for `window resizeTo` to work.
+
+**IMPORTANT NOTES**:
+
+- The e2e test would ask for clipboard permission; (tried getting around it;but did not work)
+- The e2e test require app to be running on localhost:3000
+- **TODO**: We could also test a page refresh and see that the generated links show up in page

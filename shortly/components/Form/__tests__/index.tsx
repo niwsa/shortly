@@ -106,3 +106,5 @@ test('invalid https url shows error', async () => {
   await waitFor(() => expect(urlInput).toBeInvalid())
   expect(addShrtCodeToList).not.toHaveBeenCalled()
 })
+
+// TODO: Test to check if the error messages are cleared on valid submit
