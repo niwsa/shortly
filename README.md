@@ -24,12 +24,12 @@ This provides `typescript, eslint and prettier` support out of the box.
 Added `setupTests.ts` which loads the next env into jest for testing
 
 ## Directory Layout
-
+shortly/
 - \_\_mocks\_\_
   - Contains jest mock files
 - \_\_tests\_\_
   - Contains e2e tests
-- \_\_components\_\_
+- components
   - DataCard - Renders the generated shortlink and original link with copy to clipboard button
   - FeatureCard - Renders a single feature card with its title and description along with a nice rounded icon
   - Footer - Renders the `footer` inside `_app.tsx`
