@@ -5,6 +5,7 @@
 Install the packages and start the dev server on port 3000
 
 ```bash
+cd shortly
 yarn install
 yarn dev
 ```
