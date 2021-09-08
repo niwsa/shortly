@@ -1,46 +1,95 @@
-### Objective
+# SHORTLY
 
-Using TypeScript and NextJS, your challenge is to build out a URL shortening web app, integrate with the [shrtcode API](https://app.shrtco.de/docs), and get it looking as close to the design as possible.
+## How to get going ?
 
-### Brief
+Install the packages and start the dev server on port 3000
 
-URL shortening is a technique on the Web in which a Uniform Resource Locator (URL) may be made substantially shorter and still direct to the required page. This is achieved by using a redirect that links to the web page that has a long URL. For example, the URL "https://example.com/assets/category_B/subcategory_C/Foo/" can be shortened to "https://example.com/Foo", and the URL "http://example.com/about/index.html" can be shortened to "https://goo.gl/aO3Ssc ".
+```bash
+yarn install
+yarn dev
+```
 
-Your challenge is to build out this landing page, integrate with the [shrtcode API](https://app.shrtco.de/docs) and get it looking as close to the design as possible.
+Open your browser of choice and go to http://localhost:3000
 
-Your users should be able to:
+## Dev Tooling Setup
 
--   View the optimal layout for the site depending on their device's screen size
--   Shorten any valid URL
--   See a list of their shortened links, even after refreshing the browser
--   Copy the shortened link to their clipboard in a single click
--   Receive an error message when the `form` is submitted if:
-    -   The `input` field is empty
+The project was bootstrapped from https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest by running
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design to work to along with active states.
+```bash
+yarn create next-app --example with-typescript-eslint-jest with-typescript-eslint-jest-app
+```
 
-You will find all the required assets in the `/images` folder. The assets are already optimized. The designs are in JPG static format. This will mean that you'll need to use your best judgment for styles such as `font-size`, `padding`, and `margin`.
+This provides `typescript, eslint and prettier` support out of the box.
+Added `setupTests.ts` which loads the next env into jest for testing
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+## Directory Layout
 
-### Evaluation Criteria
+- \_\_mocks\_\_
+  - Contains jest mock files
+- \_\_tests\_\_
+  - Contains e2e tests
+- \_\_components\_\_
+  - DataCard - Renders the generated shortlink and original link with copy to clipboard button
+  - FeatureCard - Renders a single feature card with its title and description along with a nice rounded icon
+  - Footer - Renders the `footer` inside `_app.tsx`
+  - Form - Renders the `form` which takes in user link and calls the shrtco.de API to get the short link.
+  - Hero - Renders the hero landing content along with the illustration;Will be the first thing a user sees on loading the page.
+  - Logo - Logo used in header and footer with both dark and light versions.
+  - PageHeader - Renders the banner with the logo, navigation and signup buttons
+- hooks
+  - useKeyPress.ts - Listens for a specific key press and triggers handler
+  - useOnClickOutside.ts - Listens for click outside a component.
+  - useWindowSize.ts - Listens to window `resize` events and returns the current width/height.
+- lib
+  - apiClient.ts - fetch call to shrtco.de API
+  - cms.ts - A small catalogue most likely a whole Content Management System interfacing in a production app.
+  - localStorage.ts - Store and retrieve short links from localStorage.
+- pages
+  - \_document.tsx - Used for sourcing "Poppins" font and setting document language.
+  - \_app.tsx - Persists layout between page changes (both `<header>` and `<footer>` + `<main>` which holds the page level contents are rendered here). Global css is imported here.
+  - index.tsx - Renders the `/` path inside `<main>` with whatever comes between `<header>` and `<footer>`
+  - Home.module.css - Contains layout styling for `/` path
+- public
+  - Contains different SVG assets used across the application
+- styles
+  - global.css - declares the CSS variables, font-family, responsive app font size and content padding plus call to action (`.ctoa`) button style.
 
--   **TypeScript** best practices
--   Show us your work through your commit history
--   We're looking for you to produce working code, with enough room to demonstrate how to structure components in a small program
--   Completeness: did you complete the features?
--   Correctness: does the functionality act in sensible, thought-out ways?
--   Maintainability: is it written in a clean, maintainable way?
--   Testing: is the system adequately tested?
+## Tests
 
-### Deliverables
+To run the tests:
 
-Make sure to include all source code in the repository.
+```bash
+yarn test
+```
 
-### CodeSubmit
+Where to find the test files:
 
-Please organize, design, test, and document your code as if it were going into production - then push your changes to the master branch. After you have pushed your code, you may submit the assignment on the assignment page.
+```js
+components/ <component> /__tests__
+```
 
-**Have fun building!** 🚀
+eg:
 
-The finn GmbH Team
+```js
+components / PageHeader / __tests__
+```
+
+### Testing Frameworks and libraries:
+
+This project uses testing-library along with its companion libs like
+
+- `@testing-library/jest-dom` (for better assertions like `toHaveClass`),
+- `@testing-library/react` (for rendering React components),
+- `@testing-library/user-event` (for simulating user click and keypress).
+
+The test running is made possible via `jest`.
+
+For REST API mocking this project uses [msw](https://mswjs.io/). `Fetch` api is polyfilled in jest with `whatwg-fetch`.
+
+For testing mobile viewports (nav dropdown) `mq-polyfill` is [added](https://spectrum.chat/testing-library/help-react/how-to-set-window-innerwidth-to-test-mobile~70aa9572-b7cc-4397-92f5-a09d75ed24b8?m=MTU1OTU5MTI2MTI0MQ==) innorder for `window resizeTo` to work.
+
+**IMPORTANT NOTES**:
+
+- The e2e test would ask for clipboard permission; (tried getting around it;but did not work)
+- The e2e test require app to be running on localhost:3000
+- **TODO**: We could also test a page refresh and see that the generated links show up in page
